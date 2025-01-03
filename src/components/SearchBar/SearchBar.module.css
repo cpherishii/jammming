@@ -1,0 +1,20 @@
+.nav {
+    text-align: center;
+    background-color: darkgreen;
+}
+
+.nav h1 {
+    color: white;
+    margin: 0;
+    padding: 10px;
+}
+
+.SearchBar {
+    text-align: center;
+    padding: 50px;
+}
+
+.SearchBar input {
+    width: 200px;
+    margin-right: 10px;
+}
