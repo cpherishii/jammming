@@ -1,0 +1,9 @@
+.Login {
+    text-align: center;
+}
+
+.LoginInput {
+    display: block;
+    margin: 10px auto;
+    width: 200px;
+}

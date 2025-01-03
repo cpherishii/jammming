@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Login from './components/Login/Login';
 import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/SearchResults/SearchResults';
 import Playlist from './components/Playlist/Playlist';
@@ -35,6 +36,7 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResultTracks, setSearchResultTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('New Playlist');
+  const isLoggedIn = true;
 
   const handleAddTrack = (index) => {
     setPlaylistTracks(prevTracks => {
@@ -48,21 +50,34 @@ function App() {
     });
   };
 
+  const saveToSpotify = () => {
+    const uris = playlistTracks.map(track => track.uri);
+    console.log(`Saving playlist ${playlistName} with tracks:`);
+    console.log(uris);
+  };
+
   useEffect(() => {
     console.log(playlistName);
   }, [playlistName]);
 
   return (
     <>
-      <SearchBar />
-      <div className="trackLists">
-        <SearchResults onTrackAction={handleAddTrack} tracks={tracks} />
-        <Playlist 
-          onTrackAction={handleRemoveTrack}
-          playlistTracks={playlistTracks}
-          setPlaylistName={setPlaylistName}
-        />
-      </div>
+      {!isLoggedIn ? (
+        <Login />
+      ) : (
+        <>
+          <SearchBar />
+          <div className="trackLists">
+            <SearchResults onTrackAction={handleAddTrack} tracks={tracks} />
+            <Playlist 
+              onTrackAction={handleRemoveTrack}
+              playlistTracks={playlistTracks}
+              setPlaylistName={setPlaylistName}
+              saveToSpotify={saveToSpotify}
+            />
+          </div>
+        </>
+      )}
     </>
   );
 }
