@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/SearchResults/SearchResults';
@@ -7,6 +7,7 @@ import Playlist from './components/Playlist/Playlist';
 const tracks = [
   {
       'id': 0,
+      'uri': 'spotify:track:2yBVeksU2EtrPJbTu4ZslK',
       'name': 'What a Fool Believes',
       'artist': 'The Doobie Brothers',
       'album': 'Minute by Minute',
@@ -14,6 +15,7 @@ const tracks = [
   },
   {
       'id': 1,
+      'uri': 'spotify:track:5emxp4RqsF6QoAWXW2Afrk',
       'name': 'Peg',
       'artist': 'Steely Dan',
       'album': 'Aja',
@@ -21,6 +23,7 @@ const tracks = [
   },
   {
       'id': 2,
+      'uri': 'spotify:track:6YIggUJW3ttAAPRdnki8RM',
       'name': 'Disarm',
       'artist': 'The Smashing Pumpkins',
       'album': 'Siamese Dream',
@@ -31,6 +34,7 @@ const tracks = [
 function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResultTracks, setSearchResultTracks] = useState([]);
+  const [playlistName, setPlaylistName] = useState('New Playlist');
 
   const handleAddTrack = (index) => {
     setPlaylistTracks(prevTracks => {
@@ -44,12 +48,20 @@ function App() {
     });
   };
 
+  useEffect(() => {
+    console.log(playlistName);
+  }, [playlistName]);
+
   return (
     <>
       <SearchBar />
       <div className="trackLists">
         <SearchResults onTrackAction={handleAddTrack} tracks={tracks} />
-        <Playlist onTrackAction={handleRemoveTrack} playlistTracks={playlistTracks} />
+        <Playlist 
+          onTrackAction={handleRemoveTrack}
+          playlistTracks={playlistTracks}
+          setPlaylistName={setPlaylistName}
+        />
       </div>
     </>
   );

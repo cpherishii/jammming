@@ -1,3 +1,15 @@
 .Playlist {
     padding: 50px;
 }
+
+.Playlist input {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+}
+
+.PlaylistSave {
+    display: block;
+    margin-top: 20px;
+}

@@ -1,3 +1,7 @@
 .SearchResults {
     padding: 50px;
 }
+
+.SearchResults h2 {
+    margin: 20px 0;
+}
