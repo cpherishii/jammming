@@ -3,13 +3,13 @@ import styles from './SearchResults.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
 
-const SearchResults = ({onTrackAction, tracks}) => {
+const SearchResults = ({onTrackAction, searchResultTracks}) => {
 
     return (
         <div className={styles.SearchResults}>
             <h2>Results</h2>
             <Tracklist
-                tracks={tracks}
+                searchResultTracks={searchResultTracks}
                 button="add"
                 onTrackAction={onTrackAction}
                 keyPrefix="SearchResults"

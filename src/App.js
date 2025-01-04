@@ -38,6 +38,7 @@ function App() {
   const [playlistName, setPlaylistName] = useState('New Playlist');
   const [accessToken, setAccessToken] = useState(null);
 
+  console.log('Search Result Tracks: ' + searchResultTracks);
   console.log('Access Token: ' + accessToken);
 
   const handleAddTrack = (index) => {
@@ -85,15 +86,28 @@ function App() {
     }   
   }, []);
 
+  useEffect(() => {
+    console.log(`Updated Search Result Tracks: ${searchResultTracks}`);
+  }, [searchResultTracks]);
+
   return (
     <>
       {!accessToken ? (
-        <Login />
+        <>
+          <Login />
+          <p id="error-message"></p>
+        </>
       ) : (
         <>
-          <SearchBar setAccessToken={setAccessToken} />
+          <SearchBar 
+            setAccessToken={setAccessToken}
+            setSearchResultTracks={setSearchResultTracks}
+          />
           <div className="trackLists">
-            <SearchResults onTrackAction={handleAddTrack} tracks={tracks} />
+            <SearchResults 
+              onTrackAction={handleAddTrack}
+              searchResultTracks={searchResultTracks}
+            />
             <Playlist 
               onTrackAction={handleRemoveTrack}
               playlistTracks={playlistTracks}
