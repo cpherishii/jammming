@@ -36,7 +36,9 @@ function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResultTracks, setSearchResultTracks] = useState([]);
   const [playlistName, setPlaylistName] = useState('New Playlist');
-  const isLoggedIn = true;
+  const [accessToken, setAccessToken] = useState(null);
+
+  console.log('Access Token: ' + accessToken);
 
   const handleAddTrack = (index) => {
     setPlaylistTracks(prevTracks => {
@@ -57,16 +59,39 @@ function App() {
   };
 
   useEffect(() => {
-    console.log(playlistName);
-  }, [playlistName]);
+    const storedToken = window.localStorage.getItem('access_token');
+    if (storedToken) {
+      setAccessToken(storedToken);
+      return;
+    }
+
+    const hash = window.location.hash;
+    if (hash) {
+      const params = new URLSearchParams(hash.slice(1));
+      const token = params.get('access_token');
+      const expiresIn = parseInt(params.get('expires_in'), 10);
+
+      if (token) {
+        setAccessToken(token);
+        window.localStorage.setItem('access_token', token);
+
+        setTimeout(() => {
+          setAccessToken(null);
+          window.localStorage.removeItem('access_token');
+        }, expiresIn * 1000);
+
+        window.location.hash = '';
+      }
+    }   
+  }, []);
 
   return (
     <>
-      {!isLoggedIn ? (
+      {!accessToken ? (
         <Login />
       ) : (
         <>
-          <SearchBar />
+          <SearchBar setAccessToken={setAccessToken} />
           <div className="trackLists">
             <SearchResults onTrackAction={handleAddTrack} tracks={tracks} />
             <Playlist 
