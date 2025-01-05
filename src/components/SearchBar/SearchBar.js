@@ -33,7 +33,7 @@ const SearchBar = ({setAccessToken, setSearchResultTracks}) => {
     return (
         <>
             <div className={styles.nav}>
-                <h1>Jammming</h1>
+                <h1 className={styles.title}>Ja<span className={styles.mmm}>mmm</span>ing</h1>
                 <a className={styles.LogoutButton} href="#" onClick={handleLogout}>Log Out</a>
             </div>
             <div className={styles.SearchBar}>
