@@ -20,6 +20,16 @@ const SearchBar = ({setAccessToken, setSearchResultTracks}) => {
         setSearchResultTracks(tracks);
     };
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleSearchButton();
+        }
+    };
+
+    const handleInputFocus = ({target}) => {
+        target.select();
+    };
+
     return (
         <>
             <div className={styles.nav}>
@@ -30,6 +40,8 @@ const SearchBar = ({setAccessToken, setSearchResultTracks}) => {
                 <input 
                     placeholder="Enter a Song, Artist or Genre"
                     onChange={handleSearchTermChange}
+                    onKeyDown={handleKeyPress}
+                    onFocus={handleInputFocus}
                     value={searchTerm}/>
                 <button 
                     className={styles.SearchButton}

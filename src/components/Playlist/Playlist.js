@@ -6,13 +6,18 @@ const Playlist = ({playlistTracks, playlistName, onTrackAction, setPlaylistName,
 
     const handlePlaylistNameChange = ({target}) => {
         setPlaylistName(target.value);
-    }
+    };
+
+    const handleInputFocus = ({target}) => {
+        target.select();
+    };
 
     return (
         <div className={styles.Playlist}>
             <input 
                 placeholder="New Playlist"
                 onChange={handlePlaylistNameChange}
+                onFocus={handleInputFocus}
                 value={playlistName}
             />
             <Tracklist 
