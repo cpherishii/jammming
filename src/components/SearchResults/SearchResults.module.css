@@ -1,5 +1,6 @@
 .SearchResults {
     padding: 50px;
+    max-width: 300px;
 }
 
 .SearchResults h2 {

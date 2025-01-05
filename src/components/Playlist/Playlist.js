@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
-const Playlist = ({playlistTracks, onTrackAction, setPlaylistName, saveToSpotify}) => {
+const Playlist = ({playlistTracks, playlistName, onTrackAction, setPlaylistName, saveToSpotify}) => {
 
     const handlePlaylistNameChange = ({target}) => {
         setPlaylistName(target.value);
@@ -10,7 +10,11 @@ const Playlist = ({playlistTracks, onTrackAction, setPlaylistName, saveToSpotify
 
     return (
         <div className={styles.Playlist}>
-            <input placeholder="New Playlist" onChange={handlePlaylistNameChange} />
+            <input 
+                placeholder="New Playlist"
+                onChange={handlePlaylistNameChange}
+                value={playlistName}
+            />
             <Tracklist 
                 tracks={playlistTracks}
                 button="remove"

@@ -1,5 +1,6 @@
 .Playlist {
     padding: 50px;
+    max-width: 300px;
 }
 
 .Playlist input {

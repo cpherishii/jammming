@@ -39,11 +39,13 @@ function App() {
   const [accessToken, setAccessToken] = useState(null);
 
   console.log('Search Result Tracks: ' + searchResultTracks);
+  console.log(`Playlist Tracks: ${playlistTracks.map(track => track.name)}`);
   console.log('Access Token: ' + accessToken);
 
   const handleAddTrack = (index) => {
+    console.log(`Adding track ${searchResultTracks[index].name} to playlist`);
     setPlaylistTracks(prevTracks => {
-      return [...prevTracks, tracks[index]];
+      return [...prevTracks, searchResultTracks[index]];
     });
   };
 
@@ -110,6 +112,7 @@ function App() {
             />
             <Playlist 
               onTrackAction={handleRemoveTrack}
+              playlistName={playlistName}
               playlistTracks={playlistTracks}
               setPlaylistName={setPlaylistName}
               saveToSpotify={saveToSpotify}

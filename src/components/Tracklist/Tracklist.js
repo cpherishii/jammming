@@ -2,12 +2,12 @@ import React from 'react';
 import styles from './Tracklist.module.css';
 import Track from '../Track/Track';
 
-const Tracklist = ({searchResultTracks = [], button, handleCheckboxChange, onTrackAction, keyPrefix}) => {
-    console.log(`Search Result Tracks: ${searchResultTracks}`);
+const Tracklist = ({tracks = [], button, handleCheckboxChange, onTrackAction, keyPrefix}) => {
+    console.log(`Tracks: ${tracks.map(track => track.name)}`);
     return (
         <>
-            {searchResultTracks.length > 0 ? (
-                searchResultTracks.map((track, i) => {
+            {tracks.length > 0 ? (
+                tracks.map((track, i) => {
                     return (
                         <Track 
                             track={track}

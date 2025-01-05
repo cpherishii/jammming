@@ -9,7 +9,7 @@ const SearchResults = ({onTrackAction, searchResultTracks}) => {
         <div className={styles.SearchResults}>
             <h2>Results</h2>
             <Tracklist
-                searchResultTracks={searchResultTracks}
+                tracks={searchResultTracks}
                 button="add"
                 onTrackAction={onTrackAction}
                 keyPrefix="SearchResults"
