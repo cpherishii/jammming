@@ -5,25 +5,15 @@ import { getTracks } from '../../utils/api';
 const SearchBar = ({setAccessToken, setSearchResultTracks}) => {
     const [searchTerm, setSearchTerm] = useState('');
 
-    const handleSearchTermChange = ({target}) => {
+    const handleSearchTermChange = async ({target}) => {
         setSearchTerm(target.value);
+        const tracks = await getTracks(searchTerm);
+        setSearchResultTracks(tracks);
     };
 
     const handleLogout = () => {
         setAccessToken(null);
         window.localStorage.removeItem('access_token');
-    };
-
-    const handleSearchButton = async () => {
-        const tracks = await getTracks(searchTerm);
-        console.log(`Tracks: ${tracks}`);
-        setSearchResultTracks(tracks);
-    };
-
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            handleSearchButton();
-        }
     };
 
     const handleInputFocus = ({target}) => {
@@ -40,13 +30,8 @@ const SearchBar = ({setAccessToken, setSearchResultTracks}) => {
                 <input 
                     placeholder="Enter a Song, Artist or Genre"
                     onChange={handleSearchTermChange}
-                    onKeyDown={handleKeyPress}
                     onFocus={handleInputFocus}
                     value={searchTerm}/>
-                <button 
-                    className={styles.SearchButton}
-                    onClick={handleSearchButton}>SEARCH
-                </button>
             </div>
         </>
     )

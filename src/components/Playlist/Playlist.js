@@ -34,7 +34,8 @@ const Playlist = ({playlistTracks, playlistName, onTrackAction, setPlaylistName,
                         tracks={playlistTracks}
                         button="remove"
                         onTrackAction={onTrackAction}
-                        keyPrefix="Playlist"/>
+                        keyPrefix="Playlist"
+                    />
                     <button className={styles.PlaylistSave} onClick={saveToSpotify}>SAVE TO SPOTIFY</button>
                 </div>
             ) : (
