@@ -9,9 +9,10 @@ const Track = ({track, index, button, onTrackAction}) => {
 
     return (
         <div className={styles.Track}>
+            <img src={track.imgUrl} alt={track.name} />
             <div className={styles.TrackInfo}>
                 <h3>{track.name}</h3>
-                <p>{track.artist}</p>
+                <p>{track.artists}</p>
                 <p>{track.album}</p>
                 <button className={styles.TrackAction} onClick={handleClick}>
                     {button === 'add' ? 'Add' : 'Remove'}

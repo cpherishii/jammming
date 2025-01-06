@@ -5,7 +5,7 @@ import Track from '../Track/Track';
 const Tracklist = ({tracks, button, handleCheckboxChange, onTrackAction, keyPrefix}) => {
     console.log(`Tracks: ${tracks.map(track => track.name)}`);
     return (
-        <>
+        <div className={styles.Tracklist}>
             {tracks.length > 0 ? (
                 tracks.map((track, i) => {
                     return (
@@ -23,7 +23,7 @@ const Tracklist = ({tracks, button, handleCheckboxChange, onTrackAction, keyPref
                 <p>No tracks found.</p>
             )
             }
-        </>
+        </div>
     );
 };
 

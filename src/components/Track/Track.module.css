@@ -1,0 +1,19 @@
+.Track {
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+}
+
+.Track img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+}
+
+.TrackInfo h3 {
+    margin: 0;
+}
+
+.TrackInfo p {
+    margin: 5px;
+}

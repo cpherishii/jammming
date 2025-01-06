@@ -5,33 +5,6 @@ import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/SearchResults/SearchResults';
 import Playlist from './components/Playlist/Playlist';
 
-const tracks = [
-  {
-      'id': 0,
-      'uri': 'spotify:track:2yBVeksU2EtrPJbTu4ZslK',
-      'name': 'What a Fool Believes',
-      'artist': 'The Doobie Brothers',
-      'album': 'Minute by Minute',
-      'duration_ms': 205000
-  },
-  {
-      'id': 1,
-      'uri': 'spotify:track:5emxp4RqsF6QoAWXW2Afrk',
-      'name': 'Peg',
-      'artist': 'Steely Dan',
-      'album': 'Aja',
-      'duration_ms': 237000
-  },
-  {
-      'id': 2,
-      'uri': 'spotify:track:6YIggUJW3ttAAPRdnki8RM',
-      'name': 'Disarm',
-      'artist': 'The Smashing Pumpkins',
-      'album': 'Siamese Dream',
-      'duration_ms': 200000
-  }
-];
-
 function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
   const [searchResultTracks, setSearchResultTracks] = useState([]);
