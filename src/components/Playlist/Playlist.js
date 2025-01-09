@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import styles from './Playlist.module.css';
 import Tracklist from '../Tracklist/Tracklist';
 
-const Playlist = ({playlistTracks, playlistName, onTrackAction, setPlaylistName, saveToSpotify}) => {
+const Playlist = ({playlistTracks, setPlaylistTracks, playlistName, onTrackAction, setPlaylistName, saveToSpotify}) => {
 
     const handlePlaylistNameChange = ({target}) => {
         setPlaylistName(target.value);
@@ -35,6 +35,7 @@ const Playlist = ({playlistTracks, playlistName, onTrackAction, setPlaylistName,
                         button="remove"
                         onTrackAction={onTrackAction}
                         keyPrefix="Playlist"
+                        setPlaylistTracks={setPlaylistTracks}
                     />
                     <button className={styles.PlaylistSave} onClick={saveToSpotify}>SAVE TO SPOTIFY</button>
                 </div>

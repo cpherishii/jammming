@@ -87,6 +87,7 @@ function App() {
               onTrackAction={handleRemoveTrack}
               playlistName={playlistName}
               playlistTracks={playlistTracks}
+              setPlaylistTracks={setPlaylistTracks}
               setPlaylistName={setPlaylistName}
               saveToSpotify={saveToSpotify}
             />
