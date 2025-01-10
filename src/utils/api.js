@@ -1,7 +1,22 @@
-import React from 'react';
 
-const getTracks = async (searchTerm) => {
-    const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${searchTerm}`;
+const getTracks = async ({searchTerm = '', track = '', artist = '', album = '', genre = ''}) => {
+    let queryParts = [];
+
+    if (track || artist || album || genre) {
+        if (track) queryParts.push(`track:${encodeURIComponent(track)}`);
+        if (artist) queryParts.push(`artist:${encodeURIComponent(artist)}`);
+        if (album) queryParts.push(`album:${encodeURIComponent(album)}`);
+        if (genre) queryParts.push(`genre:${encodeURIComponent(genre)}`);
+    } else if (searchTerm) {
+        queryParts.push(encodeURIComponent(searchTerm));
+    } else {
+        console.error('No search term provided.');
+        return [];
+    }
+
+    const searchQuery = queryParts.join(' ');
+    const searchUrl = `https://api.spotify.com/v1/search?type=track&q=${searchQuery}`;
+    console.log('Search URL: ' + searchUrl);
     const accessToken = window.localStorage.getItem('access_token');
     if (!accessToken) {
         console.error('Access token not found.');

@@ -12,10 +12,6 @@ function App() {
   const [playlistName, setPlaylistName] = useState('New Playlist');
   const [accessToken, setAccessToken] = useState(null);
 
-  console.log('Search Result Tracks: ' + searchResultTracks);
-  console.log(`Playlist Tracks: ${playlistTracks.map(track => track.name)}`);
-  console.log('Access Token: ' + accessToken);
-
   const handleAddTrack = (index) => {
     console.log(`Adding track ${searchResultTracks[index].name} to playlist`);
     setPlaylistTracks(prevTracks => {
