@@ -4,6 +4,7 @@ import Login from './components/Login/Login';
 import SearchBar from './components/SearchBar/SearchBar';
 import SearchResults from './components/SearchResults/SearchResults';
 import Playlist from './components/Playlist/Playlist';
+import { v4 as uuidv4 } from 'uuid';
 
 function App() {
   const [playlistTracks, setPlaylistTracks] = useState([]);
@@ -18,7 +19,7 @@ function App() {
   const handleAddTrack = (index) => {
     console.log(`Adding track ${searchResultTracks[index].name} to playlist`);
     setPlaylistTracks(prevTracks => {
-      return [...prevTracks, searchResultTracks[index]];
+      return [...prevTracks, { ...searchResultTracks[index], uniqueId: uuidv4() },];
     });
   };
 

@@ -6,7 +6,7 @@ const SearchResults = ({onTrackAction, searchResultTracks}) => {
 
     return (
         <div className={styles.SearchResults}>
-            {searchResultTracks.length > 0 ? (
+            {searchResultTracks.length > 0 && (
                 <div className={styles.SearchResultsContainer}>
                     <h2>Results</h2>
                     <Tracklist
@@ -16,9 +16,7 @@ const SearchResults = ({onTrackAction, searchResultTracks}) => {
                         keyPrefix="SearchResults"
                     />
                 </div>
-                ) : (
-                    <p>No tracks found.</p>
-            )}
+                )}
         </div>
     );
 };

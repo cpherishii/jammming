@@ -22,7 +22,7 @@ const Playlist = ({playlistTracks, setPlaylistTracks, playlistName, onTrackActio
 
     return (
         <div className={styles.Playlist}>
-            {playlistTracks.length > 0 ? (
+            {playlistTracks.length > 0 && (
                 <div className={styles.PlaylistContainer} ref={playlistRef}>
                     <input 
                         placeholder="New Playlist"
@@ -39,8 +39,6 @@ const Playlist = ({playlistTracks, setPlaylistTracks, playlistName, onTrackActio
                     />
                     <button className={styles.PlaylistSave} onClick={saveToSpotify}>SAVE TO SPOTIFY</button>
                 </div>
-            ) : (
-                <p>No tracks in playlist.</p>
             )}
         </div>
     )
